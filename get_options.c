@@ -54,6 +54,7 @@ t_option* get_option(int ac, char **av){
 // {
 //     t_option* s = get_option(argc, argv);
 //     printf("%d", s->p);
+//     printf("%d", s->c);
+//     printf("%d", s->t);
 //     return 0;
 // }
-

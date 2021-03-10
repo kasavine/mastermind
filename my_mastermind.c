@@ -38,6 +38,7 @@ int count_misplaced(char* code, char* guess, char* pieces){
                                                             //  a b c d e f 
     int* code_array = count_pieces(pieces, code); // aab        // [2 1 0 0 0 0]
     int* guess_array = count_pieces(pieces, guess); // abc      // [1 1 1 0 0 0]
+    
     int result = 0;
     int i = 0;
     while (i < 8){
@@ -51,7 +52,6 @@ int count_misplaced(char* code, char* guess, char* pieces){
             result += right;
         }
         i++;
-
     }   
     return (((int)result) - (count_well_placed(code, guess)));
 }
@@ -82,7 +82,7 @@ void execute_game(char* code, char* pieces, int attempts){
             }
         }
     }
-    else{
+    else {
         printf("4 digits code, 8 pieces of elements");
     }
 }
@@ -100,16 +100,11 @@ char* gen_random(char* pieces){
 
 int main(int ac, char **av)
 {
-    char* code;
-    char* pieces;
-    int attempts;
+    char* pieces = "01234567";
+    char* code  = gen_random(pieces);
+    int attempts = 10;
 
-    
     t_option* options = get_option(ac, av);
-
-    pieces = "01234567";
-    code = gen_random(pieces);
-    attempts = 10;
 
     if (options->p != NULL){
         pieces = options->p;
@@ -120,7 +115,6 @@ int main(int ac, char **av)
     if (options->t != 0){
         attempts = options->t;
     }
-    // printf("%d", attempts );
     execute_game(code, pieces, attempts);
     return 0;
 }

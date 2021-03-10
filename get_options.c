@@ -49,14 +49,3 @@ t_option* get_option(int ac, char **av){
     }
     return option;
 }
-
-
-
-// int main(int argc, char **argv)
-// {
-//     t_option* s = get_option(argc, argv);
-//     printf("%s\n", s->p);
-//     printf("%s\n", s->c);
-//     printf("%s\n", s->t);
-//     return 0;
-// }

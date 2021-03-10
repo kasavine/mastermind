@@ -100,20 +100,32 @@ char* gen_random(char* pieces){
 
 int main(int ac, char **av)
 {
-    char* pieces = "01234567";
-    char* code  = gen_random(pieces);
-    int attempts = 10;
+    char* pieces;
+    char* code;
+    int attempts;
 
     t_option* options = get_option(ac, av);
 
     if (options->p != NULL){
         pieces = options->p;
     }
+    else {
+        pieces = "01234567";
+    }
+
     if (options->c != NULL){
         code = options->c;
     }
+    else {
+        code  = gen_random(pieces);
+        printf("Random: |%s|", code);
+    }
+
     if (options->t != 0){
         attempts = options->t;
+    }
+    else {
+        attempts = 10;
     }
     execute_game(code, pieces, attempts);
     return 0;

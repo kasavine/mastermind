@@ -88,12 +88,13 @@ void execute_game(char* code, char* pieces, int attempts){
 }
 
 char* gen_random(char* pieces){
-    char* res = (char*)malloc(sizeof(char) * 5);
-    int i = 0;
-    while (i < 4){
-        res[i] = pieces[rand() % 4];
-        i++;
-    }
+    char* res = (char*)malloc(sizeof(char) + 1);
+    srand((unsigned int)(time(NULL)));
+	int index = 0;
+	for (index = 0; index < 4; index++){
+		res[index] = pieces[rand() % (sizeof pieces - 1)];
+	}
+	// puts("");
     res[4] = '\0';
     return res;
 }

@@ -5,8 +5,8 @@
 #include <unistd.h>
 
 typedef struct t_option{
-    int c;
-    int p;
+    char* c;
+    char* p;
     int t;
 } t_option;
 
@@ -14,7 +14,7 @@ void my_memset(char* buff, char c, int size);
 void my_bzero(char* buff, int size);
 char* my_init(int size);
 int is_option(char* str);
-void set_option(t_option* option, char* str);
+void set_option(t_option* option, char* name, char* key);
 t_option* get_option(int ac, char **av);
 
 int count_well_placed(char* code, char* guess);

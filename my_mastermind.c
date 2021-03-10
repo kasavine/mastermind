@@ -63,25 +63,22 @@ void execute_game(char* code, char* pieces, int attempts){
         int i = 0;
         
         while (i < attempts){
-            printf("Attempt number %d. Enter 4 digits: \n", i + 1);
+            printf("Attempt number %d. Enter 4 symbols: \n", i + 1);
             read(0, guess, 5);
             guess[4] = '\0';
 
             if (strcmp(guess, code) == 0){
-                printf("Mm-hmm! That is THE number.\n");
+                printf("Mm-hmm! That is THE combination.\n");
                 break;
             } 
             else {
-                printf("It is not the number\n");
+                printf("It is not the combination\n");
                 printf("Well placed pieces: %d\n", count_well_placed(code, guess));
                 printf("Misplaced pieces: %d\n\n", count_misplaced(code, guess, pieces));
-                printf("Code: %s\n", code);
-                printf("Guess: %s\n", guess);
-                printf("Pieces: %s\n", pieces);
             }
             i++;
             if (i == attempts){
-                printf("That was your last attempt. You lost");
+                printf("That was your last attempt. You lost. Ha ha ...");
             }
         }
     }
@@ -104,18 +101,26 @@ char* gen_random(char* pieces){
 int main(int ac, char **av)
 {
     char* code;
-    int i = 0;
+    char* pieces;
+    int attempts;
+
+    
     t_option* options = get_option(ac, av);
-    while (i < ac){
-        if (options->c == 1){
-            if (is_option(av[i+1]) == 0)
-                code = av[i+1];
-        }
-        else {
-            code = gen_random("01234567");
-        }
-        i++;
+
+    pieces = "01234567";
+    code = gen_random(pieces);
+    attempts = 10;
+
+    if (options->p != NULL){
+        pieces = options->p;
     }
-    execute_game(code, "01234567", 6);
+    if (options->c != NULL){
+        code = options->c;
+    }
+    if (options->t != 0){
+        attempts = options->t;
+    }
+    // printf("%d", attempts );
+    execute_game(code, pieces, attempts);
     return 0;
 }

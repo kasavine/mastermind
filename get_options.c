@@ -25,16 +25,16 @@ int is_option(char* str){
     return 0;
 }
 
-void set_option(t_option* option, char* str){
+void set_option(t_option* option, char* name, char* value){
     int i = 0;
-    while (str[i]){
-        if (str[i] == 'c')
-            option->c = 1;
-        if (str[i] == 'p')
-            option->p = 1;
-        if (str[i] == 't')
-            option->t = 1;
-        i++;
+    while (name[i]){
+        if (name[i] == 'c')
+            option->c = value;
+        if (name[i] == 'p')
+            option->p = value;
+        if (name[i] == 't')
+            option->t = atoi(value);
+        i++; 
     }
 }
 
@@ -43,18 +43,20 @@ t_option* get_option(int ac, char **av){
     int i = 0;
     while (i < ac){
         if (is_option(av[i]) == 1){
-            set_option(option, av[i] + 1);
+            set_option(option, av[i], av[i+1]);
         }
         i++;
     }
     return option;
 }
 
+
+
 // int main(int argc, char **argv)
 // {
 //     t_option* s = get_option(argc, argv);
-//     printf("%d", s->p);
-//     printf("%d", s->c);
-//     printf("%d", s->t);
+//     printf("%s\n", s->p);
+//     printf("%s\n", s->c);
+//     printf("%s\n", s->t);
 //     return 0;
 // }

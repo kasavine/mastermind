@@ -16,15 +16,19 @@ For each guess program provides feedback in the following form:
 
 
 #### Before
-`git clone https://github.com/kasavine/mastermind.git`
-`cd mastermind`
-`make`
+```
+git clone https://github.com/kasavine/mastermind.git
+cd mastermind
+make
+```
 
 #### Run (play with default pieces)
 `./my_mastermind`
 
 #### How to play not in a default mode
-`./my_mastermind -c XXXX -p XXXXXXXX -t X`
-`./my_mastermind -c abcd -p abcdefgh -t 5`
+```
+./my_mastermind -c XXXX -p XXXXXXXX -t X
+./my_mastermind -c abcd -p abcdefgh -t 5
+```
 
 If something is not provided - default mode
